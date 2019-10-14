@@ -1,9 +1,45 @@
 {
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
-	"font_size": 12,
+	"file_exclude_patterns":
+	[
+		"/Users/maxheinritz/flexport/mobile/drive/.drive.graphql.json",
+		"/Users/maxheinritz/flexport/mobile/drive/data/schema.json",
+		"/Users/maxheinritz/flexport/.yarn/releases/yarn-1.13.0.js",
+		"/Users/maxheinritz/flexport/.static_data_cache.json",
+		"*.DS_Store"
+	],
+	"folder_exclude_patterns":
+	[
+		"tmp/data",
+		"node_modules",
+		"public/packs",
+		"private/build/source_maps",
+		"coverage",
+		"app/assets/javascripts/vendor",
+		".git",
+		"log",
+		"tmp/cache",
+		"tmp/capybara",
+		".byebug_history",
+		"mobile/drive/.tmp",
+		"mobile/drive/src/bin/Exponent.app",
+		"db/old_migrations"
+	],
+	"font_size": 14,
+	"hot_exit": false,
 	"ignored_packages":
 	[
 		"Vintage"
+	],
+	"on_post_save_user":
+	[
+		{
+			"command": "build"
+		}
+	],
+	"remember_open_files": false,
+	"rulers":
+	[
+		80
 	],
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
