@@ -2,31 +2,32 @@ local set = vim.opt
 set.background = "dark"
 set.colorcolumn = "80"
 set.expandtab = true -- Use spaces instead of tabs
-set.number = true -- Line numbers
+set.number = true    -- Line numbers
 set.relativenumber = true
-set.shiftwidth = 2 -- Size of an indent
+set.shiftwidth = 2   -- Size of an indent
 set.softtabstop = 2
-set.tabstop = 2 -- Number of spaces tabs count for
+set.tabstop = 2      -- Number of spaces tabs count for
 
 require("maxh.isolated_history")
 require("maxh.remap")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("maxh/plugins", {})
 
 -- TO CONFIG
+-- https://github.com/tpope/vim-dadbod
 -- https://github.com/ruifm/gitlinker.nvim
 -- https://github.com/kylechui/nvim-surround
 -- https://github.com/joe-re/sql-language-server
