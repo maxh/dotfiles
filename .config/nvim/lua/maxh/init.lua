@@ -36,7 +36,6 @@ require("lazy").setup("maxh/plugins", {})
 -- Fix asterisk indentation on ESLint docs
 -- tpope unimpaired plugin for buffer management
 -- eslint.codeActionsOnSave -- only run import order eslint on save
--- debugging
 
 -- FOR A NEW COMPUTER
 -- mkdir ~/.local/share/nvim/databases/
