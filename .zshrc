@@ -83,3 +83,4 @@ br() {
     n=$(cat /dev/urandom | base64 | tr -dc '0-9a-zA-Z' | head -c15)
     git checkout -b maxh/"$n"
 }
+alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
