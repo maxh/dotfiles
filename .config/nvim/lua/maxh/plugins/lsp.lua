@@ -1,8 +1,8 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
+		"folke/neodev.nvim",
 		"hrsh7th/cmp-nvim-lsp",
-		{ "folke/neodev.nvim", config = true },
 	},
 	config = function()
 		vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
