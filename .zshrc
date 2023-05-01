@@ -84,3 +84,4 @@ br() {
     git checkout -b maxh/"$n"
 }
 alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
