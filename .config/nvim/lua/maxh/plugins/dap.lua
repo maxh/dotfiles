@@ -7,7 +7,7 @@ return {
 	config = function()
 		local dap = require("dap")
 
-    vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
+		vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
 
 		vim.api.nvim_set_keymap(
 			"n",
@@ -58,6 +58,12 @@ return {
 			':lua require("dap").disconnect()<CR>',
 			{ noremap = true, silent = true }
 		)
+		vim.api.nvim_set_keymap(
+			"n",
+			"<Leader>dq",
+			':lua require("dapui").close()<CR>',
+			{ noremap = true, silent = true }
+		)
 
 		require("dap-vscode-js").setup({
 			node_path = "node",
@@ -98,16 +104,27 @@ return {
 			}
 		end
 
-		require("dapui").setup()
+		require("dapui").setup({
+			layouts = {
+				{
+					elements = {
+						{
+							id = "repl",
+							size = 0.5,
+						},
+						{
+							id = "console",
+							size = 0.5,
+						},
+					},
+					position = "bottom",
+					size = 10,
+				},
+			},
+		})
 		local dapui = require("dapui")
 		dap.listeners.after.event_initialized["dapui_config"] = function()
 			dapui.open()
-		end
-		dap.listeners.before.event_terminated["dapui_config"] = function()
-			dapui.close()
-		end
-		dap.listeners.before.event_exited["dapui_config"] = function()
-			dapui.close()
 		end
 	end,
 }
