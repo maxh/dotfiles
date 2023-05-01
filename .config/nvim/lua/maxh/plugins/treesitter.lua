@@ -5,7 +5,13 @@ return {
 	end,
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "typescript", "lua" },
+			ensure_installed = {
+				"bash",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"typescript",
+			},
 			sync_install = false,
 			auto_install = true,
 			highlight = {
