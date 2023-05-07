@@ -21,6 +21,7 @@ return {
 	"tpope/vim-abolish",
 	"tpope/vim-commentary",
 	"tpope/vim-fugitive",
+	"L3MON4D3/LuaSnip",
 	{
 		"windwp/nvim-autopairs",
 		config = true,
