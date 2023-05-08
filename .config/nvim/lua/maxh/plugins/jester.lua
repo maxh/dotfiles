@@ -1,36 +1,43 @@
 return {
-  "David-Kunz/jester",
-  dependencies = {
-    "rcarriga/nvim-dap-ui",
-    "mxsdev/nvim-dap-vscode-js",
-  },
-  opts = {
-    dap = {
-      type = "pwa-node",
-      request = "launch",
-      name = "Launch test current file (pwa-node with jest)",
-      cwd = vim.fn.getcwd(),
-      runtimeArgs = { "$path_to_jest", "--no-coverage", "-t", "$result", "--", "$file" },
-      runtimeExecutable = "node",
-      args = { "${file}", "--coverage", "false" },
-      rootPath = "${workspaceFolder}",
-      sourceMaps = true,
-      console = "integratedTerminal",
-      internalConsoleOptions = "neverOpen",
-      skipFiles = { "<node_internals>/**", "node_modules/**" },
-    },
-  },
-  config = function(_, opts)
-    local jester = require("jester")
-    vim.keymap.set("n", "<Leader>jd", function()
-      jester.debug()
-    end)
-    vim.keymap.set("n", "<Leader>jf", function()
-      jester.debug_file()
-    end)
-    vim.keymap.set("n", "<Leader>jl", function()
-      jester.debug_last()
-    end)
-    jester.setup(opts)
-  end,
+	"David-Kunz/jester",
+	dependencies = {
+		"rcarriga/nvim-dap-ui",
+		"mxsdev/nvim-dap-vscode-js",
+	},
+	opts = {
+		dap = {
+			type = "pwa-node",
+			request = "launch",
+			name = "Launch test current file (pwa-node with jest)",
+			cwd = vim.fn.getcwd(),
+			runtimeExecutable = "node",
+			args = { "${file}", "--coverage", "false" },
+			rootPath = "${workspaceFolder}",
+			sourceMaps = true,
+			console = "integratedTerminal",
+			internalConsoleOptions = "neverOpen",
+			skipFiles = { "<node_internals>/**", "node_modules/**" },
+		},
+	},
+	config = function(_, opts)
+		local jester = require("jester")
+		vim.keymap.set("n", "<Leader>jd", function()
+			jester.debug({
+				dap = {
+					runtimeArgs = { "$path_to_jest", "--no-coverage", "-t", "$result", "--", "$file" },
+				},
+			})
+		end)
+		vim.keymap.set("n", "<Leader>jf", function()
+			jester.debug_file({
+				dap = {
+					runtimeArgs = { "$path_to_jest", "--no-coverage", "--", "$file" },
+				},
+			})
+		end)
+		vim.keymap.set("n", "<Leader>jl", function()
+			jester.debug_last()
+		end)
+		jester.setup(opts)
+	end,
 }
