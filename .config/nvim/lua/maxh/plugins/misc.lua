@@ -14,6 +14,13 @@ return {
 			})
 		end,
 	},
+	{
+		"junegunn/goyo.vim",
+		config = function()
+			vim.keymap.set("n", "<Leader>zg", "<Cmd>:Goyo<CR>", { desc = "Goyo 'zen' mode" })
+		end,
+	},
+	"junegunn/limelight.vim",
 	{ "kana/vim-textobj-entire", dependencies = { "kana/vim-textobj-user" } },
 	"kkharji/sqlite.lua",
 	"RRethy/vim-illuminate",
@@ -31,8 +38,5 @@ return {
 		config = function()
 			require("gitsigns").setup({ current_line_blame = true })
 		end,
-	},
-	{
-		"nvim-lualine/lualine.nvim",
 	},
 }
