@@ -17,11 +17,14 @@ return {
 
 		-- Grep
 		vim.keymap.set("n", "<leader>fg", require("maxh.custom_actions").live_grep_args, {})
-		vim.keymap.set("n", "<leader>fr", require("maxh.custom_actions").live_grep_args_in_search_dir, {})
+		vim.keymap.set("n", "<leader>fv", require("maxh.custom_actions").live_grep_args_in_search_dir, {})
 
 		-- Find files
 		vim.keymap.set("n", "<leader>ff", require("maxh.custom_actions").find_files, {})
 		vim.keymap.set("n", "<leader>fc", require("maxh.custom_actions").find_files_in_search_dir, {})
+
+		-- Resume previous
+		vim.keymap.set("n", "<leader>fr", require("telescope.builtin").resume, {})
 
 		-- Find buffers
 		vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, {})
