@@ -32,6 +32,28 @@ return {
 	{ "kana/vim-textobj-entire", dependencies = { "kana/vim-textobj-user" } },
 	"kkharji/sqlite.lua",
 	"RRethy/vim-illuminate",
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({})
+		end,
+	},
+	{
+		"stevearc/dressing.nvim",
+		opts = {
+			select = {
+				-- Looking for a select that is:
+				-- 1. Not Telescope (so it doesn't mess with "resume" history for searches)
+				-- 2. Has numbers for quick selection like default select
+				-- 3. Appears in the center of the window to minimize eye movement
+				-- 4. Comes with no other baggage
+				disabled = true,
+			},
+		},
+		config = true,
+	},
 	"tpope/vim-abolish",
 	"tpope/vim-commentary",
 	"tpope/vim-fugitive",
