@@ -30,11 +30,10 @@ return {
 		oil.setup(opts)
 
 		-- Map a keybinding to trigger the function
-		vim.api.nvim_set_keymap(
-			"n",
-			"<C-->",
-			[[<Cmd>lua require("maxh/custom_actions").open_vertical_split_and_run_oil()<CR>]],
-			{ noremap = true, silent = true }
-		)
+		vim.keymap.set("n", "<C-->", function()
+			vim.cmd("vsplit")
+			vim.cmd("wincmd l")
+			vim.cmd(':lua require("oil").open()')
+		end, { noremap = true, silent = true })
 	end,
 }
