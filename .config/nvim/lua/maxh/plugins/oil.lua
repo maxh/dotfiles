@@ -28,5 +28,13 @@ return {
 		local oil = require("oil")
 		vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
 		oil.setup(opts)
+
+		-- Map a keybinding to trigger the function
+		vim.api.nvim_set_keymap(
+			"n",
+			"<C-->",
+			[[<Cmd>lua require("maxh/custom_actions").open_vertical_split_and_run_oil()<CR>]],
+			{ noremap = true, silent = true }
+		)
 	end,
 }

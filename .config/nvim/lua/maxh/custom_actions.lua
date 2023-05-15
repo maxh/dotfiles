@@ -48,4 +48,10 @@ function M.live_grep_args_in_search_dir()
 	})
 end
 
+function M.open_vertical_split_and_run_oil()
+	vim.cmd("vsplit")
+	vim.cmd("wincmd l")
+	vim.cmd(':lua require("oil").open()')
+end
+
 return M
