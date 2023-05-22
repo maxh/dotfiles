@@ -150,7 +150,7 @@ return {
 						},
 					},
 					position = "bottom",
-					size = 10,
+					size = 20,
 				},
 			},
 		})
