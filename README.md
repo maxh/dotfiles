@@ -9,6 +9,10 @@ dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 ```
 
+## On each separate asdf node version
+
+- npm install -g typescript-language-server
+
 ## Manual installation on each machine
 
 To install:
