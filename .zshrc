@@ -85,3 +85,11 @@ br() {
 }
 alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/maxheinritz/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
