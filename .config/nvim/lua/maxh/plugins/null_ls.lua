@@ -9,6 +9,7 @@ return {
 			sources = {
 				null_ls.builtins.formatting.clang_format,
 				null_ls.builtins.formatting.prettier,
+
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.sql_formatter,
 			},
@@ -20,7 +21,7 @@ return {
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
-							vim.lsp.buf.format()
+							vim.lsp.buf.format({ timeout_ms = 5000 })
 						end,
 					})
 				end
