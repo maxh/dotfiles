@@ -18,6 +18,7 @@ dotfiles config --local status.showUntrackedFiles no
 To install:
 
 - LSPs with Mason
+- For working with ASDF may need separate `npm i -g graphql-language-service-cli`
 
 ### TypeScript debugging setup
 
