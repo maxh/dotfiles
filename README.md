@@ -17,6 +17,7 @@ dotfiles config --local status.showUntrackedFiles no
 
 To install:
 
+- `brew install rg`
 - LSPs with Mason
 - For working with ASDF may need separate `npm i -g graphql-language-service-cli`
 
