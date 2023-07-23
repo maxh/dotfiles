@@ -16,6 +16,9 @@ return {
 				dismiss = "<C-e>",
 			},
 		},
+		filetypes = {
+			markdown = false,
+		},
 		panel = {
 			enabled = false,
 		},

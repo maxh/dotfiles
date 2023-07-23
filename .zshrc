@@ -40,24 +40,10 @@ NEWLINE=$'
 '
 export PROMPT='${NEWLINE}%B%F{245}%~ $(parse_git_branch) %(?..[%?] ) %f%b${NEWLINE}%# '
 
-# Run 's add new feature' to make a new commit.
-s() {
-    git add .
-    git commit -am "$*"
-}
-
 e() {
   git diff main --name-only | grep "\.ts" | xargs yarn eslint --fix --no-error-on-unmatched-pattern
 }
 
-# Run 'p' to push commits.
-alias p="git push"
-
-# Run 'm' to checkout the main branch.
-alias m="git checkout main"
-
-# Run 'mpr' to create a new pull request (requires gh cmd line util).
-alias mpr="git push -u origin HEAD && gh pr create -w"
 
 # Show the 8 most recently committed-to Git branches.
 alias gitrec="git branch --sort=-committerdate | head -n 8"
