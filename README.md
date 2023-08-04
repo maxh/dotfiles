@@ -18,7 +18,7 @@ dotfiles config --local status.showUntrackedFiles no
 To install:
 
 - `brew install rg`
-- LSPs with Mason
+- LSPs with Mason - `:Mason`
 - For working with ASDF may need separate `npm i -g graphql-language-service-cli`
 
 ### TypeScript debugging setup
@@ -34,3 +34,9 @@ npm install
 npx gulp vsDebugServerBundle
 mv dist out
 ```
+
+## Updating
+
+- `:Lazy sync`
+- `:Mason` => `U`
+- `:TSUpdate`
