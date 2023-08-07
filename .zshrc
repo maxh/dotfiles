@@ -1,5 +1,4 @@
 fpath+=/Users/maxheinritz/.zsh/completion
-fpath+=/Users/maxheinritz/.zsh/completion
 
 path+=('/Users/maxheinritz/.local/bin')
 export PATH
@@ -39,11 +38,6 @@ setopt PROMPT_SUBST
 NEWLINE=$'
 '
 export PROMPT='${NEWLINE}%B%F{245}%~ $(parse_git_branch) %(?..[%?] ) %f%b${NEWLINE}%# '
-
-e() {
-  git diff main --name-only | grep "\.ts" | xargs yarn eslint --fix --no-error-on-unmatched-pattern
-}
-
 
 # Show the 8 most recently committed-to Git branches.
 alias gitrec="git branch --sort=-committerdate | head -n 8"

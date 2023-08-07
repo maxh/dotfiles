@@ -1,8 +1,16 @@
 # https://unix.stackexchange.com/a/197135
 # Defined here so accessible in Vim shell.
 
+u() {
+    git add .
+    git commit -am "$*"
+    git push
+}
 
-# Run 's add new feature' to make a new commit.
+e() {
+  git diff main --name-only | grep "\.ts" | xargs yarn eslint --fix --no-error-on-unmatched-pattern
+}
+
 s() {
     git add .
     git commit -am "$*"
