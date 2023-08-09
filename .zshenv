@@ -1,22 +1,29 @@
 # https://unix.stackexchange.com/a/197135
 # Defined here so accessible in Vim shell.
 
+# "update" => add, commit, push
+# Eg: u add feature
 u() {
     git add .
     git commit -am "$*"
     git push
 }
 
+# "eslint" => run eslint fix on all .ts files, add, commit, push
 e() {
-  git diff main --name-only | grep "\.ts" | xargs yarn eslint --fix --no-error-on-unmatched-pattern
+  yarn style:eslint:fix-diff
+  git add .
+  git commit -am "fix lint"
+  git push
 }
 
+# "save" => add, commit
 s() {
     git add .
     git commit -am "$*"
 }
 
-# Run 'p' to push commits.
+# "push" => push
 alias p="git push"
 
 # Run 'm' to checkout the main branch.
