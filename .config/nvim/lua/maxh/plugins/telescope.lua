@@ -19,6 +19,9 @@ return {
 		vim.keymap.set("n", "<leader>fg", require("maxh.custom_actions").live_grep_args, {})
 		vim.keymap.set("n", "<leader>fv", require("maxh.custom_actions").live_grep_args_in_search_dir, {})
 
+		-- Grep word under cursor
+		vim.keymap.set("n", "<leader>fw", require("telescope.builtin").grep_string, {})
+
 		-- Find files
 		vim.keymap.set("n", "<leader>ff", require("maxh.custom_actions").find_files, {})
 		vim.keymap.set("n", "<leader>fc", require("maxh.custom_actions").find_files_in_search_dir, {})
