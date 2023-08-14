@@ -19,6 +19,7 @@ end
 
 require("maxh.isolated_history")
 require("maxh.remap")
+require("maxh.remap_m")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -40,7 +41,6 @@ require("lazy").setup("maxh/plugins", {})
 -- fugitive push all
 -- https://github.com/tpope/vim-dadbod
 -- https://github.com/ruifm/gitlinker.nvim
--- https://github.com/kylechui/nvim-surround
 -- https://github.com/joe-re/sql-language-server
 -- Autocomplete class name based on file name
 -- ESLint running in the background
@@ -56,7 +56,6 @@ require("lazy").setup("maxh/plugins", {})
 
 -- TO REMEMBER
 -- "*y to copy selection to system clipboard
--- yae - yank entire buffer, vae - select enter buffer
 -- live grep args: "foo bar" baz -> search for foo bar in dir baz
 
 -- FOR A NEW CODEBASE

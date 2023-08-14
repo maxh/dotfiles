@@ -29,20 +29,3 @@ vim.keymap.set("n", "<leader>d", '"_d', { remap = false })
 -- Yank without changing register content.
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { remap = false })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { remap = false })
-
--- Copy current file name to system clipboard.
--- "f" for "full path", "r" for "relative path", "u" for url, "l" for "line-specific url"
-vim.keymap.set("n", "<leader>mf", ":let @+=expand('%:p')<CR>", { silent = true, remap = false })
-vim.keymap.set("n", "<leader>mr", ":let @+=fnamemodify(expand('%'), ':~:.')<CR>", { silent = true, remap = false })
-vim.keymap.set(
-	"n",
-	"<leader>mu",
-	":let @+=v:lua.require('maxh.github_link').get_github_url()<CR>",
-	{ noremap = true, silent = true }
-)
-vim.keymap.set(
-	"n",
-	"<leader>ml",
-	":let @+=v:lua.require('maxh.github_link').get_github_url_line()<CR>",
-	{ noremap = true, silent = true }
-)

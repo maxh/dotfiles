@@ -1,10 +1,10 @@
 local M = {}
 
-function escape_lua_pattern(str)
+local function escape_lua_pattern(str)
 	return str:gsub("[-.*+?^$()%[%]%%]", "%%%0")
 end
 
-function get_relative_path_to_git_root()
+local function get_relative_path_to_git_root()
 	local current_file = vim.fn.expand("%:p")
 	local git_root = vim.fn.system("git rev-parse --show-toplevel")
 	git_root = vim.fn.trim(git_root)
@@ -12,6 +12,17 @@ function get_relative_path_to_git_root()
 	local relative_path = current_file:gsub("^" .. git_root_pattern .. "/", "")
 	relative_path = string.gsub(relative_path, "^/", "")
 	return relative_path
+end
+
+local function open_link_in_browser(link)
+	local cmd = string.format("open %s", link) -- Assuming a Unix-like system with xdg-open
+	local job_id = vim.fn.jobstart(cmd, {
+		on_exit = function(job_id, exit_code, _)
+			if exit_code ~= 0 then
+				print(string.format("Error opening link: %s", link))
+			end
+		end,
+	})
 end
 
 function M.get_github_url()
@@ -29,6 +40,16 @@ function M.get_github_url_line()
 	local github_url = M.get_github_url()
 	local line_number = vim.fn.line(".")
 	return github_url .. "#L" .. line_number
+end
+
+function M.open_github_url()
+	local github_url = M.get_github_url()
+	open_link_in_browser(github_url)
+end
+
+function M.open_github_url_line()
+	local github_url_line = M.get_github_url_line()
+	open_link_in_browser(github_url_line)
 end
 
 return M
