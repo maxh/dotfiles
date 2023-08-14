@@ -31,6 +31,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { remap = false })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { remap = false })
 
 -- Copy current file name to system clipboard.
+-- "f" for "full path", "r" for "relative path", "l" for "link
 vim.keymap.set("n", "<leader>mf", ":let @+=expand('%:p')<CR>", { silent = true, remap = false })
 vim.keymap.set("n", "<leader>mr", ":let @+=fnamemodify(expand('%'), ':~:.')<CR>", { silent = true, remap = false })
 vim.keymap.set(
