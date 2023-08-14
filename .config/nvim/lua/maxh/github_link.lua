@@ -25,4 +25,10 @@ function M.get_github_url()
 	return remote_url .. "/blob/" .. main_branch .. "/" .. current_file
 end
 
+function M.get_github_url_line()
+	local github_url = M.get_github_url()
+	local line_number = vim.fn.line(".")
+	return github_url .. "#L" .. line_number
+end
+
 return M
