@@ -54,12 +54,8 @@ return {
 						["<C-k>"] = actions.cycle_history_prev,
 					},
 				},
-			},
-			defaults = {
-				file_ignore_patterns = {
-					"node_modules",
-					"pdf.worker.min.js",
-				},
+				-- Use a .ignore file in the project root instead.
+				-- file_ignore_patterns = {},
 			},
 			extensions = {
 				live_grep_args = {
