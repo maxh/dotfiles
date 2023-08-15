@@ -32,17 +32,15 @@ vim.keymap.set("n", "<leader>d", '"_d', { remap = false })
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { remap = false })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { remap = false })
 
--- Copy current file name to system clipboard.
-
--- [f]ull path
+-- Copy [f]ull path.
 vim.keymap.set("n", "<leader>mf", ":let @+=expand('%:p')<CR>", opts)
--- [r]elative path
+-- Copy [r]elative path.
 vim.keymap.set("n", "<leader>mr", ":let @+=fnamemodify(expand('%'), ':~:.')<CR>", opts)
--- [u]rl
-vim.keymap.set("n", "<leader>mu", ":let @+=v:lua.require('maxh.github_link').get_github_url()<CR>", opts)
--- [l]ine-specific url
+-- Copy wh[o]le-file URL.
+vim.keymap.set("n", "<leader>mo", ":let @+=v:lua.require('maxh.github_link').get_github_url()<CR>", opts)
+-- Copy [l]ine-specific URL.
 vim.keymap.set("n", "<leader>ml", ":let @+=v:lua.require('maxh.github_link').get_github_url_line()<CR>", opts)
-
--- Open current file in GitHub in browser.
+-- Open wh[o]le-file URL.
 vim.keymap.set("n", "go", require("maxh.github_link").open_github_url, opts)
+-- Open [l]ine-specific URL.
 vim.keymap.set("n", "gl", require("maxh.github_link").open_github_url_line, opts)
