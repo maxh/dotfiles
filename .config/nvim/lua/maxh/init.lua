@@ -19,7 +19,6 @@ end
 
 require("maxh.isolated_history")
 require("maxh.remap")
-require("maxh.remap_m")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
