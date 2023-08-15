@@ -55,6 +55,12 @@ return {
 					},
 				},
 			},
+			defaults = {
+				file_ignore_patterns = {
+					"node_modules",
+					"pdf.worker.min.js",
+				},
+			},
 			extensions = {
 				live_grep_args = {
 					auto_quoting = true,
