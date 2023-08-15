@@ -37,16 +37,16 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("maxh/plugins", {})
 
 -- TO CONFIG
--- fugitive stage all
--- fugitive push all
 -- https://github.com/tpope/vim-dadbod
--- https://github.com/ruifm/gitlinker.nvim
 -- https://github.com/joe-re/sql-language-server
 -- Autocomplete class name based on file name
 -- ESLint running in the background
 -- Fix asterisk indentation on ESLint docs
 -- tpope unimpaired plugin for buffer management
 -- eslint.codeActionsOnSave -- only run import order eslint on save
+-- curl like postman
+-- https://stackoverflow.com/questions/67666083/setting-up-curl-much-like-postman
+-- no need to use dotfiles command
 
 -- FOR A NEW COMPUTER
 -- mkdir ~/.local/share/nvim/databases/
