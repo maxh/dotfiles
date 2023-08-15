@@ -15,7 +15,7 @@ local function get_relative_path_to_git_root()
 end
 
 local function open_link_in_browser(link)
-	local cmd = string.format("open %s", link) -- Assuming a Unix-like system with xdg-open
+	local cmd = string.format("open %s", link)
 	local job_id = vim.fn.jobstart(cmd, {
 		on_exit = function(job_id, exit_code, _)
 			if exit_code ~= 0 then
