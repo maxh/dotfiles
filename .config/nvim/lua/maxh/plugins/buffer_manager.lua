@@ -46,7 +46,7 @@ return {
 		map("n", "<M-k>", bmui.nav_prev, opts)
 
 		-- Just the menu
-		map({ "t", "n" }, "<Leader>b", bmui.toggle_quick_menu, opts)
+		map({ "t", "n" }, "<leader>b", bmui.toggle_quick_menu, opts)
 
 		-- Next/Prev
 		map("n", "<M-j>", bmui.nav_next, opts)

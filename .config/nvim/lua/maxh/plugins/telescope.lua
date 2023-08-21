@@ -38,7 +38,7 @@ return {
 		-- Find recent
 		vim.keymap.set(
 			"n",
-			"<Leader><Leader>",
+			"<leader><leader>",
 			[[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
 			{ noremap = true, silent = true }
 		)

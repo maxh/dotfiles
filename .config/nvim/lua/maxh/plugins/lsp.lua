@@ -12,12 +12,12 @@ return {
 		-- Recommended key bindings from
 		-- https://github.com/neovim/nvim-lspconfig
 		local opts = { noremap = true, silent = true }
-		vim.keymap.set("n", "<space>go", vim.diagnostic.open_float, opts)
+		vim.keymap.set("n", "<leader>go", vim.diagnostic.open_float, opts)
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-		vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
-		vim.keymap.set("n", "<space>ge", vim.diagnostic.goto_next, opts)
-		vim.keymap.set("n", "<space>gr", vim.diagnostic.goto_prev, opts)
+		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+		vim.keymap.set("n", "<leader>ge", vim.diagnostic.goto_next, opts)
+		vim.keymap.set("n", "<leader>gr", vim.diagnostic.goto_prev, opts)
 
 		-- Done in typescript.lua instead.
 		-- require("lspconfig").tsserver.setup({})

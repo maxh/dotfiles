@@ -21,21 +21,21 @@ return {
 	},
 	config = function(_, opts)
 		local jester = require("jester")
-		vim.keymap.set("n", "<Leader>jd", function()
+		vim.keymap.set("n", "<leader>jd", function()
 			jester.debug({
 				dap = {
 					runtimeArgs = { "$path_to_jest", "--no-coverage", "-t", "$result", "--", "$file" },
 				},
 			})
 		end)
-		vim.keymap.set("n", "<Leader>jf", function()
+		vim.keymap.set("n", "<leader>jf", function()
 			jester.debug_file({
 				dap = {
 					runtimeArgs = { "$path_to_jest", "--no-coverage", "--", "$file" },
 				},
 			})
 		end)
-		vim.keymap.set("n", "<Leader>jl", function()
+		vim.keymap.set("n", "<leader>jl", function()
 			jester.debug_last()
 		end)
 		jester.setup(opts)

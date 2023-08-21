@@ -9,56 +9,56 @@ return {
 
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dj",
+			"<leader>dj",
 			':lua require("dap").run_last()<CR>',
 			{ noremap = true, silent = true }
 		)
 
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>db",
+			"<leader>db",
 			':lua require("dap").toggle_breakpoint()<CR>',
 			{ noremap = true, silent = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>di",
+			"<leader>di",
 			':lua require("dap").step_into()<CR>',
 			{ noremap = true, silent = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>do",
+			"<leader>do",
 			':lua require("dap").step_over()<CR>',
 			{ noremap = true, silent = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>du",
+			"<leader>du",
 			':lua require("dap").step_out()<CR>',
 			{ noremap = true, silent = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dc",
+			"<leader>dc",
 			':lua require("dap").continue()<CR>',
 			{ noremap = true, silent = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dr",
+			"<leader>dr",
 			':lua require("dap").restart()<CR>',
 			{ noremap = true, silent = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dx",
+			"<leader>dx",
 			':lua require("dap").disconnect()<CR>',
 			{ noremap = true, silent = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			"<Leader>dt",
+			"<leader>dt",
 			':lua require("dapui").toggle()<CR>',
 			{ noremap = true, silent = true }
 		)

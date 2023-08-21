@@ -2,7 +2,7 @@ return {
 	{
 		"junegunn/goyo.vim",
 		config = function()
-			vim.keymap.set("n", "<Leader>zg", "<Cmd>:Goyo<CR>", { desc = "Goyo 'zen' mode" })
+			vim.keymap.set("n", "<leader>zg", "<Cmd>:Goyo<CR>", { desc = "Goyo 'zen' mode" })
 		end,
 	},
 	{
