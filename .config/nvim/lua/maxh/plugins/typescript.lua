@@ -8,7 +8,7 @@ return {
 			fallback = true, -- fall back to standard LSP definition on failure
 		},
 		server = { -- pass options to lspconfig's setup method
-			on_attach = require("maxh/lsp_on_attach").lsp_on_attach,
+			on_attach = require("maxh.utils.lsp_on_attach").lsp_on_attach,
 			filetypes = { "typescript", "typescriptreact" },
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			init_options = {

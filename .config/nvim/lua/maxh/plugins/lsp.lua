@@ -22,21 +22,23 @@ return {
 		-- Done in typescript.lua instead.
 		-- require("lspconfig").tsserver.setup({})
 
+		local on_attach = require("maxh.utils.lsp_on_attach").lsp_on_attach
+
 		local clangd_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		clangd_capabilities.offsetEncoding = "utf-8"
 		require("lspconfig").clangd.setup({
-			on_attach = require("maxh/lsp_on_attach").lsp_on_attach,
+			on_attach = on_attach,
 			capabilities = clangd_capabilities,
 		})
 
 		require("lspconfig").graphql.setup({
-			on_attach = require("maxh/lsp_on_attach").lsp_on_attach,
+			on_attach = on_attach,
 			filetypes = { "typescript", "typescriptreact" },
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
 
 		require("lspconfig").lua_ls.setup({
-			on_attach = require("maxh/lsp_on_attach").lsp_on_attach,
+			on_attach = on_attach,
 			filetypes = { "lua" },
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			settings = {

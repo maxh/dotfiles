@@ -41,6 +41,6 @@ vim.keymap.set("n", "<leader>mo", ":let @+=v:lua.require('maxh.github_link').get
 -- Copy [l]ine-specific URL.
 vim.keymap.set("n", "<leader>ml", ":let @+=v:lua.require('maxh.github_link').get_github_url_line()<CR>", opts)
 -- Open wh[o]le-file URL.
-vim.keymap.set("n", "go", require("maxh.github_link").open_github_url, opts)
+vim.keymap.set("n", "go", require("maxh.utils.github_link").open_github_url, opts)
 -- Open [l]ine-specific URL.
-vim.keymap.set("n", "gl", require("maxh.github_link").open_github_url_line, opts)
+vim.keymap.set("n", "gl", require("maxh.utils.github_link").open_github_url_line, opts)
