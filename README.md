@@ -11,7 +11,7 @@ dotfiles config --local status.showUntrackedFiles no
 
 ## On each separate asdf node version
 
-- npm install -g typescript-language-server
+- `npm install -g typescript-language-server`
 
 ## Manual installation on each machine
 
@@ -35,7 +35,7 @@ npx gulp vsDebugServerBundle
 mv dist out
 ```
 
-## Updating
+## Updating non-explicit dependencies
 
 - `:Lazy sync`
 - `:Mason` => `U`
