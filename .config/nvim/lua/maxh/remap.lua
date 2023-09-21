@@ -37,9 +37,9 @@ vim.keymap.set("n", "<leader>mf", ":let @+=expand('%:p')<CR>", opts)
 -- Copy [r]elative path.
 vim.keymap.set("n", "<leader>mr", ":let @+=fnamemodify(expand('%'), ':~:.')<CR>", opts)
 -- Copy wh[o]le-file URL.
-vim.keymap.set("n", "<leader>mo", ":let @+=v:lua.require('maxh.github_link').get_github_url()<CR>", opts)
+vim.keymap.set("n", "<leader>mo", ":let @+=v:lua.require('maxh.utils.github_link').get_github_url()<CR>", opts)
 -- Copy [l]ine-specific URL.
-vim.keymap.set("n", "<leader>ml", ":let @+=v:lua.require('maxh.github_link').get_github_url_line()<CR>", opts)
+vim.keymap.set("n", "<leader>ml", ":let @+=v:lua.require('maxh.utils.github_link').get_github_url_line()<CR>", opts)
 -- Open wh[o]le-file URL.
 vim.keymap.set("n", "go", require("maxh.utils.github_link").open_github_url, opts)
 -- Open [l]ine-specific URL.
