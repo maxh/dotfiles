@@ -4,14 +4,14 @@ return {
 		"nvim-lua/plenary.nvim",
 	},
 	config = function()
-		local none_ls = require("none-ls")
-		none_ls.setup({
+		local null_ls = require("null-ls")
+		null_ls.setup({
 			sources = {
-				none_ls.builtins.formatting.clang_format,
-				none_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.clang_format,
+				null_ls.builtins.formatting.prettier,
 
-				none_ls.builtins.formatting.stylua,
-				none_ls.builtins.formatting.sql_formatter,
+				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.sql_formatter,
 			},
 			-- Run formatter on save.
 			on_attach = function(client, bufnr)
