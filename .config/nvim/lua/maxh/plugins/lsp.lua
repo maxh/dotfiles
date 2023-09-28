@@ -37,6 +37,18 @@ return {
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
 
+		require("lspconfig").sqlls.setup({
+			on_attach = on_attach,
+			filetypes = { "sql" },
+			cmd = {
+				"/Users/maxheinritz/personal/sql-language-server/packages/server/npm_bin/cli.js",
+				"up",
+				"--method",
+				"stdio",
+			},
+			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		})
+
 		require("lspconfig").lua_ls.setup({
 			on_attach = on_attach,
 			filetypes = { "lua" },
