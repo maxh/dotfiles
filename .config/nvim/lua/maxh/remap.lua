@@ -44,3 +44,6 @@ vim.keymap.set("n", "<leader>ml", ":let @+=v:lua.require('maxh.utils.github_link
 vim.keymap.set("n", "go", require("maxh.utils.github_link").open_github_url, opts)
 -- Open [l]ine-specific URL.
 vim.keymap.set("n", "gl", require("maxh.utils.github_link").open_github_url_line, opts)
+
+-- Custom [q]uit [a]ll. Close all buffers, leave vim open, show greeter screen.
+vim.keymap.set("n", "<leader>qa", ":bufdo bd<CR>:Alpha<CR>", opts)
