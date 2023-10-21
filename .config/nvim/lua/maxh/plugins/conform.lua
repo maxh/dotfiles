@@ -26,9 +26,6 @@ return {
 		},
 		format_on_save = { timeout_ms = 5000, lsp_fallback = true },
 		formatters = {
-			shfmt = {
-				prepend_args = { "-i", "2" },
-			},
 			prettier = {
 				cmd = "yarn prettier",
 			},
