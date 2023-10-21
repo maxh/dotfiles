@@ -37,6 +37,11 @@ return {
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
 
+		require("lspconfig").rust_analyzer.setup({
+			on_attach = on_attach,
+			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+		})
+
 		require("lspconfig").sqlls.setup({
 			on_attach = on_attach,
 			filetypes = { "sql" },
