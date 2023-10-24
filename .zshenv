@@ -31,3 +31,4 @@ alias m="git checkout main"
 
 # Run 'mpr' to create a new pull request (requires gh cmd line util).
 alias mpr="git push -u origin HEAD && gh pr create -w"
+. "$HOME/.cargo/env"

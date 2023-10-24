@@ -75,3 +75,9 @@ esac
 # pnpm end
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+export LOOP_BACKEND=/Users/max
