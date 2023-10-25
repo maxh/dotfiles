@@ -9,6 +9,12 @@ dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 ```
 
+Also
+
+```
+brew install gh stats
+```
+
 ## On each separate asdf node version
 
 - `npm install -g typescript-language-server`
