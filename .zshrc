@@ -4,7 +4,6 @@ path+=('/Users/maxheinritz/.local/bin')
 export PATH
 
 export EDITOR=nvim
-. /usr/local/opt/asdf/libexec/asdf.sh
 kill_port() {
   lsof -ti:$1 | xargs kill -9
 }
