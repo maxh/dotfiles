@@ -1,6 +1,5 @@
 local set = vim.opt
 set.background = "dark"
-set.colorcolumn = "80"
 set.expandtab = true -- Use spaces instead of tabs
 set.linebreak = true
 set.number = true    -- Line numbers
@@ -33,7 +32,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("maxh/plugins", {})
+vim.cmd([[
+    autocmd FileType * lua require("maxh.utils.color_column").set_colorcolumn()
+]])
+
+require("lazy").setup("maxh.plugins", {})
 
 -- TO CONFIG
 -- https://github.com/tpope/vim-dadbod
