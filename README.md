@@ -36,6 +36,7 @@ mkdir tools
 cd tools
 git clone git@github.com:microsoft/vscode-js-debug.git
 cd vscode-js-debug
+echo "nodejs 18.18.1" > .tool-versions
 npm install
 npx gulp vsDebugServerBundle
 mv dist out
