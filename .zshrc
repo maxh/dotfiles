@@ -75,7 +75,7 @@ esac
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -f "$HOME/.cargo/env" ]; then
+if [ -f "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
