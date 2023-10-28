@@ -1,9 +1,5 @@
-fpath+=/Users/maxheinritz/.zsh/completion
-
-path+=('/Users/maxheinritz/.local/bin')
-export PATH
-
 export EDITOR=nvim
+
 kill_port() {
   lsof -ti:$1 | xargs kill -9
 }
@@ -65,17 +61,9 @@ br() {
 alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
-# pnpm
-export PNPM_HOME="/Users/maxheinritz/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -f "$HOME/.cargo/bin" ]; then
+if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
