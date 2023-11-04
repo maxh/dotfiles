@@ -36,7 +36,11 @@ vim.cmd([[
     autocmd FileType * lua require("maxh.utils.color_column").set_colorcolumn()
 ]])
 
-require("lazy").setup("maxh.plugins", {})
+require("lazy").setup("maxh.plugins", {
+  change_detection = {
+    notify = false,
+  },
+})
 
 -- TO CONFIG
 -- https://github.com/tpope/vim-dadbod
