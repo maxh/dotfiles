@@ -50,6 +50,8 @@ return {
             lnum = location.startLine - 1,
             end_lnum = location.endLine - 1,
             col = location.startColumn - 1,
+            -- endColumn is inclusive, but end_col is exclusive.
+            -- So we need to add 1 to endColumn.
             end_col = location.endColumn,
             message = violation.message,
           })
