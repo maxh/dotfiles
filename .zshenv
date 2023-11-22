@@ -35,3 +35,5 @@ alias mpr="git push -u origin HEAD && gh pr create -w"
 if [ -f "/Users/maxheinritz/.cargo/env" ]; then
   export PATH="$HOME/.cargo/env:$PATH"
 fi
+
+alias run_prisma_lint="node -c "

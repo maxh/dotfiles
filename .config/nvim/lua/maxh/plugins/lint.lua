@@ -5,6 +5,7 @@ return {
     "javascript",
     "javascriptreact",
     "lua",
+    "prisma",
     "sh",
     "typescript",
     "typescriptreact",
@@ -15,6 +16,7 @@ return {
       javascript = { "eslint" },
       javascriptreact = { "eslint" },
       lua = { "luacheck" },
+      prisma = { "prisma_lint" },
       sh = { "shellcheck" },
       typescript = { "eslint" },
       typescriptreact = { "eslint" },
@@ -24,28 +26,32 @@ return {
   },
   config = function(_, opts)
     local lint = require("lint")
-    require('lint').linters.your_linter_name = {
-      cmd = 'node /Users/max/loop/prisma-lint/dist/cli.js',
+    lint.linters.prisma_lint = {
+      cmd = "node",
       stdin = false,
-      args = { "--output-format", "json" },
+      args = {
+        "/Users/max/loop/prisma-lint/dist/cli.js",
+        "-c",
+        "/Users/max/loop/prisma-lint/example/.prismalintrc.json",
+        "--output-format",
+        "json" },
       append_fname = true,
-      stream = 'stdout',
-      ignore_exitcode = false,
-      parser = function(output, bufnr)
+      stream = 'both',
+      ignore_exitcode = true,
+      parser = function(output)
         local decoded = vim.json.decode(output)
         local diagnostics = {}
-        local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, true)
-        local content = table.concat(lines, '\n')
-        for _, match in pairs(decoded.matches or {}) do
-          local byteidx = vim.fn.byteidx(content, match.offset)
-          local line = vim.fn.byte2line(byteidx)
-          local col = byteidx - vim.fn.line2byte(line)
+        if decoded == nil then
+          return diagnostics
+        end
+        for _, violation in pairs(decoded["violations"]) do
+          local location = violation.location
           table.insert(diagnostics, {
-            lnum = line - 1,
-            end_lnum = line - 1,
-            col = col + 1,
-            end_col = col + 1,
-            message = match.message,
+            lnum = location.startLine - 1,
+            end_lnum = location.endLine - 1,
+            col = location.startColumn - 1,
+            end_col = location.endColumn,
+            message = violation.message,
           })
         end
         return diagnostics
