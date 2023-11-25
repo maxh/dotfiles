@@ -26,13 +26,14 @@ return {
   },
   config = function(_, opts)
     local lint = require("lint")
+    local binary_name = "prisma-lint"
     lint.linters.prisma_lint = {
-      cmd = "node",
+      cmd = function()
+        local local_binary = vim.fn.fnamemodify('./node_modules/.bin/' .. binary_name, ':p')
+        return vim.loop.fs_stat(local_binary) and local_binary or binary_name
+      end,
       stdin = false,
       args = {
-        "/Users/max/loop/prisma-lint/dist/cli.js",
-        "-c",
-        "/Users/max/loop/prisma-lint/example/.prismalintrc.json",
         "--output-format",
         "json" },
       append_fname = true,
