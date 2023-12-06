@@ -16,7 +16,7 @@ return {
       javascript = { "eslint" },
       javascriptreact = { "eslint" },
       lua = { "luacheck" },
-      prisma = { "prisma_lint" },
+      prisma = { "prisma-lint" },
       sh = { "shellcheck" },
       typescript = { "eslint" },
       typescriptreact = { "eslint" },
@@ -26,40 +26,6 @@ return {
   },
   config = function(_, opts)
     local lint = require("lint")
-    local binary_name = "prisma-lint"
-    lint.linters.prisma_lint = {
-      cmd = function()
-        local local_binary = vim.fn.fnamemodify('./node_modules/.bin/' .. binary_name, ':p')
-        return vim.loop.fs_stat(local_binary) and local_binary or binary_name
-      end,
-      stdin = false,
-      args = {
-        "--output-format",
-        "json" },
-      append_fname = true,
-      stream = 'both',
-      ignore_exitcode = true,
-      parser = function(output)
-        local decoded = vim.json.decode(output)
-        local diagnostics = {}
-        if decoded == nil then
-          return diagnostics
-        end
-        for _, violation in pairs(decoded["violations"]) do
-          local location = violation.location
-          table.insert(diagnostics, {
-            lnum = location.startLine - 1,
-            end_lnum = location.endLine - 1,
-            col = location.startColumn - 1,
-            -- endColumn is inclusive, but end_col is exclusive.
-            -- So we need to add 1 to endColumn.
-            end_col = location.endColumn,
-            message = violation.message,
-          })
-        end
-        return diagnostics
-      end,
-    }
     lint.linters_by_ft = opts.linters_by_ft
     for k, v in pairs(opts.linters) do
       lint.linters[k] = v
