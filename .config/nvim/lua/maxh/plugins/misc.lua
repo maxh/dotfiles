@@ -10,6 +10,7 @@ return {
   },
   { "kana/vim-textobj-entire", dependencies = { "kana/vim-textobj-user" } },
   "kkharji/sqlite.lua",
+  "nvim-lua/plenary.nvim",
   "RRethy/vim-illuminate",
   {
     "stevearc/dressing.nvim",
