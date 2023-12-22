@@ -28,6 +28,14 @@ function M.find_files()
 	})
 end
 
+function M.find_recent_files()
+	require("telescope").extensions.recent_files.pick({
+		prompt_title = "Find Recent Files",
+		previewer = false,
+		cwd_only = false,
+	})
+end
+
 function M.find_files_in_search_dir()
 	local search_dir = get_search_dir()
 	require("telescope.builtin").find_files({

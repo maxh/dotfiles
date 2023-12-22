@@ -2,18 +2,18 @@ local set = vim.opt
 set.background = "dark"
 set.expandtab = true -- Use spaces instead of tabs
 set.linebreak = true
-set.number = true    -- Line numbers
+set.number = true -- Line numbers
 set.relativenumber = true
-set.shiftwidth = 2   -- Size of an indent
+set.shiftwidth = 2 -- Size of an indent
 set.softtabstop = 2
-set.tabstop = 2      -- Number of spaces tabs count for
+set.tabstop = 2 -- Number of spaces tabs count for
 
 -- No tildes for empty lines.
 -- https://github.com/neovim/neovim/issues/2067
 vim.opt.fillchars = { eob = " " }
 
 if vim.fn.has("termguicolors") == 1 then
-  vim.o.termguicolors = true
+	vim.o.termguicolors = true
 end
 
 require("maxh.isolated_history")
@@ -21,14 +21,14 @@ require("maxh.remap")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -37,9 +37,9 @@ vim.cmd([[
 ]])
 
 require("lazy").setup("maxh.plugins", {
-  change_detection = {
-    notify = false,
-  },
+	change_detection = {
+		notify = false,
+	},
 })
 
 -- TO CONFIG

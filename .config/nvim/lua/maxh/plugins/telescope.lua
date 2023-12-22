@@ -38,12 +38,7 @@ return {
 		vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags, {})
 
 		-- Find recent
-		vim.keymap.set(
-			"n",
-			"<leader><leader>",
-			[[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
-			{ noremap = true, silent = true }
-		)
+		vim.keymap.set("n", "<leader><leader>", custom_actions.find_recent_files, { noremap = true, silent = true })
 		telescope.setup({
 			defaults = {
 				history = {
