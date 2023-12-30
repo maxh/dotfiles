@@ -74,38 +74,6 @@ return {
 			command = "/opt/homebrew/opt/llvm/bin/lldb-vscode",
 			name = "lldb",
 		}
-		for _, language in ipairs({ "typescript", "javascript" }) do
-			require("dap").configurations[language] = {
-				{
-					type = "pwa-node",
-					request = "launch",
-					name = "Launch file",
-					program = "${file}",
-					cwd = "${workspaceFolder}",
-				},
-				{
-					type = "pwa-node",
-					request = "attach",
-					name = "Attach",
-					processId = require("dap.utils").pick_process,
-					cwd = "${workspaceFolder}",
-				},
-				{
-					type = "pwa-node",
-					request = "launch",
-					name = "Launch test current file (pwa-node with jest)",
-					cwd = vim.fn.getcwd(),
-					runtimeArgs = { "${workspaceFolder}/node_modules/.bin/jest" },
-					runtimeExecutable = "node",
-					args = { "${file}", "--coverage", "false" },
-					rootPath = "${workspaceFolder}",
-					sourceMaps = true,
-					console = "integratedTerminal",
-					internalConsoleOptions = "neverOpen",
-					skipFiles = { "<node_internals>/**", "node_modules/**" },
-				},
-			}
-		end
 
 		local dap = require("dap")
 		dap.configurations.cpp = {
@@ -119,19 +87,6 @@ return {
 				cwd = "${workspaceFolder}",
 				stopOnEntry = false,
 				args = {},
-
-				-- 💀
-				-- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-				--
-				--    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-				--
-				-- Otherwise you might get the following error:
-				--
-				--    Error on launch: Failed to attach to the target process
-				--
-				-- But you should be aware of the implications:
-				-- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-				-- runInTerminal = false,
 			},
 		}
 		dap.configurations.c = dap.configurations.cpp

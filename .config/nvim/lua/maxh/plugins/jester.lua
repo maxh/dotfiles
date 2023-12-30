@@ -10,8 +10,7 @@ return {
 			request = "launch",
 			name = "Launch test current file (pwa-node with jest)",
 			cwd = vim.fn.getcwd(),
-			runtimeExecutable = "node",
-			args = { "${file}", "--coverage", "false" },
+			runtimeExecutable = "yarn",
 			rootPath = "${workspaceFolder}",
 			sourceMaps = true,
 			console = "integratedTerminal",
@@ -21,17 +20,19 @@ return {
 	},
 	config = function(_, opts)
 		local jester = require("jester")
+		-- Runs the block with the cursor on it in the current file.
 		vim.keymap.set("n", "<leader>jd", function()
 			jester.debug({
 				dap = {
-					runtimeArgs = { "$path_to_jest", "--no-coverage", "-t", "$result", "--", "$file" },
+					runtimeArgs = { "test", "--no-coverage", "-t", "$result", "--", "$file" },
 				},
 			})
 		end)
+		-- Runs the current file.
 		vim.keymap.set("n", "<leader>jf", function()
 			jester.debug_file({
 				dap = {
-					runtimeArgs = { "$path_to_jest", "--no-coverage", "--", "$file" },
+					runtimeArgs = { "test", "--no-coverage", "--", "$file" },
 				},
 			})
 		end)
