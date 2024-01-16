@@ -25,6 +25,7 @@ function M.find_files()
 	require("telescope.builtin").find_files({
 		find_command = find_command_files,
 		previewer = false,
+		path_display = { "truncate" },
 	})
 end
 
