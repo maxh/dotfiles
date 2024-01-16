@@ -33,6 +33,7 @@ function M.find_recent_files()
 		prompt_title = "Find Recent Files",
 		previewer = false,
 		cwd_only = false,
+		path_display = { "truncate" },
 	})
 end
 
@@ -43,11 +44,14 @@ function M.find_files_in_search_dir()
 		prompt_title = string.format("Find Files in '%s'", get_dir_label(search_dir)),
 		find_command = find_command_files,
 		previewer = false,
+		path_display = { "truncate" },
 	})
 end
 
 function M.live_grep_args()
-	require("telescope").extensions.live_grep_args.live_grep_args()
+	require("telescope").extensions.live_grep_args.live_grep_args({
+		path_display = { "truncate" },
+	})
 end
 
 function M.live_grep_args_in_search_dir()
@@ -55,6 +59,7 @@ function M.live_grep_args_in_search_dir()
 	require("telescope").extensions.live_grep_args.live_grep_args({
 		search_dirs = { search_dir },
 		prompt_title = string.format("Live Grep (Args) in '%s'", get_dir_label(search_dir)),
+		path_display = { "truncate" },
 	})
 end
 
