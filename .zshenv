@@ -23,6 +23,7 @@ s() {
     git commit -am "$*"
 }
 
+# save and make a pull request
 smpr() {
     s 'init'
     mpr
@@ -41,6 +42,12 @@ if [ -f "/Users/maxheinritz/.cargo/env" ]; then
   export PATH="$HOME/.cargo/env:$PATH"
 fi
 
+# prod:tunnel:run
 ptr() {
     yarn prod:tunnel:run $*
+}
+
+# edit backfill, for use after yarn gen:backfill
+eb() {
+  nvim $(git diff --name-only HEAD src/app/backfill)
 }
