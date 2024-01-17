@@ -1,3 +1,9 @@
+# maxh's dotfiles
+
+## Install
+
+### Dotfiles
+
 <https://www.atlassian.com/git/tutorials/dotfiles>
 
 ```sh
@@ -9,27 +15,21 @@ dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
 ```
 
-Also
+### Other tools
 
+```sh
+brew install --cask kitty
+brew install gh stats rg fzf
+
+# To install useful key bindings and fuzzy completion:
+$(brew --prefix)/opt/fzf/install
 ```
-brew install gh stats
-```
 
-## On each separate asdf node version
-
-- `npm install -g typescript-language-server`
-
-## Manual installation on each machine
-
-To install:
-
-- `brew install rg`
-- LSPs with Mason - `:Mason`
-- For working with ASDF may need separate `npm i -g graphql-language-service-cli`
+Install LSPs with Mason within Neovim: `:Mason`.
 
 ### TypeScript debugging setup
 
-~/tools/vscode-js-debug
+Goal is to create `~/tools/vscode-js-debug`:
 
 ```
 mkdir tools
@@ -42,8 +42,14 @@ npx gulp vsDebugServerBundle
 mv dist out
 ```
 
-## Updating non-explicit dependencies
+## Update
 
 - `:Lazy sync`
 - `:Mason` => `U`
 - `:TSUpdate`
+
+### After new asdf node version
+
+```sh
+npm install -g typescript-language-server graphql-language-service-cli
+```
