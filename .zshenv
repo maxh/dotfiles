@@ -23,6 +23,11 @@ s() {
     git commit -am "$*"
 }
 
+smpr() {
+    s 'init'
+    mpr
+}
+
 # "push" => push
 alias p="git push"
 
@@ -35,3 +40,7 @@ alias mpr="git push -u origin HEAD && gh pr create -w"
 if [ -f "/Users/maxheinritz/.cargo/env" ]; then
   export PATH="$HOME/.cargo/env:$PATH"
 fi
+
+ptr() {
+    yarn prod:tunnel:run $*
+}
