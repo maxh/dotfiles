@@ -49,5 +49,5 @@ ptr() {
 
 # edit backfill, for use after yarn gen:backfill
 eb() {
-  nvim $(git diff --name-only HEAD src/app/backfill)
+  nvim $(git add src/app/backfill && git diff --name-only HEAD src/app/backfill)
 }
