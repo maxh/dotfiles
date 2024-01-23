@@ -29,6 +29,13 @@ function M.find_files()
 	})
 end
 
+function M.grep_string()
+	require("telescope.builtin").grep_string({
+		previewer = true,
+		path_display = { "truncate" },
+	})
+end
+
 function M.find_recent_files()
 	require("telescope").extensions.recent_files.pick({
 		prompt_title = "Find Recent Files",

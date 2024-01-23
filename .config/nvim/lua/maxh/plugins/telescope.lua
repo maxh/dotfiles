@@ -22,7 +22,7 @@ return {
 		vim.keymap.set("n", "<leader>fv", custom_actions.live_grep_args_in_search_dir, {})
 
 		-- Grep word under cursor
-		vim.keymap.set("n", "<leader>fw", require("telescope.builtin").grep_string, {})
+		vim.keymap.set("n", "<leader>fw", custom_actions.grep_string, {})
 
 		-- Find files
 		vim.keymap.set("n", "<leader>ff", custom_actions.find_files, {})
