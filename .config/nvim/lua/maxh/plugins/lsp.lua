@@ -17,7 +17,7 @@ return {
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
-		-- Done in typescript.lua instead.
+		-- Done with typescript-tools.lua instead.
 		-- require("lspconfig").tsserver.setup({})
 
 		local on_attach = require("maxh.utils.lsp_on_attach").lsp_on_attach
