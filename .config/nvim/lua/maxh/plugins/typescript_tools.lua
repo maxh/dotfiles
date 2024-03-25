@@ -1,12 +1,16 @@
 -- Adds additional commands beyond the default TypeScript LSP.
 return {
 	"pmizio/typescript-tools.nvim",
+	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	opts = {
 		on_attach = require("maxh.utils.lsp_on_attach").lsp_on_attach,
 		filetypes = { "typescript", "typescriptreact" },
 		capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		settings = {
 			expose_as_code_action = "all",
+			tsserver_file_preferences = {
+				importModuleSpecifierPreference = "non-relative",
+			},
 		},
 		-- init_options = {
 		-- 	preferences = {
