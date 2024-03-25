@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"mxsdev/nvim-dap-vscode-js",
 		"rcarriga/nvim-dap-ui",
+		"nvim-neotest/nvim-nio",
 	},
 	config = function()
 		vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
