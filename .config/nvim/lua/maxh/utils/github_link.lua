@@ -4,11 +4,11 @@ local function escape_lua_pattern(str)
 	return str:gsub("[-.*+?^$()%[%]%%]", "%%%0")
 end
 
--- TODO: Auto strip out the oil prefex from eg:
--- https://github.com/loop-payments/backend/blob/main/oil:///Users/max/loop/backend/src/domain/platform/artifact-ingress/edi-ingress/
-
 local function get_relative_path_to_git_root()
 	local current_file = vim.fn.expand("%:p")
+	if current_file:find("oil://") then
+		current_file = current_file:gsub("oil://", "")
+	end
 	local git_root = vim.fn.system("git rev-parse --show-toplevel")
 	git_root = vim.fn.trim(git_root)
 	local git_root_pattern = escape_lua_pattern(git_root)
