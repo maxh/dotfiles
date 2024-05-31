@@ -51,5 +51,6 @@ mv dist out
 ### After new asdf node version
 
 ```sh
+asdf install && corepack enable && asdf reshim && yarn
 npm install -g typescript-language-server graphql-language-service-cli
 ```

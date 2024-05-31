@@ -18,6 +18,8 @@ function M.lsp_on_attach(_, bufnr)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	-- [g]o to [i]mplementation
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	-- [g]o to [t]ype definition
+	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 
 	-- show type
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
