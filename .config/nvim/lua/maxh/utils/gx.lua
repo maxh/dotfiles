@@ -10,6 +10,10 @@ local function extract_url(line)
 	local url = line:match("<(https?://[^>]+)>")
 		or line:match("%((https?://[^%)]+)%)")
 		or line:match("(https?://[^%s]+)")
+	-- Strip trailing } if any
+	if url then
+		url = url:gsub("}$", "")
+	end
 	return url
 end
 
