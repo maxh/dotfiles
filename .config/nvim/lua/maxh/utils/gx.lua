@@ -8,6 +8,7 @@ end
 -- Define a function to extract the URL from Markdown syntax
 local function extract_url(line)
 	local url = line:match("<(https?://[^>]+)>")
+		or line:match("%'(https?://[^%)]+)%'")
 		or line:match("%((https?://[^%)]+)%)")
 		or line:match("(https?://[^%s]+)")
 	-- Strip trailing } if any
