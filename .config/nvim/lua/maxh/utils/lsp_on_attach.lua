@@ -35,13 +35,13 @@ function M.lsp_on_attach(_, bufnr)
 	end, bufopts)
 
 	-- Maybe delete these?
-	-- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workleader_folder, bufopts)
-	vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workleader_folder, bufopts)
-	vim.keymap.set("n", "<leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
-	end, bufopts)
-	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+	-- vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workleader_folder, bufopts)
+	-- vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workleader_folder, bufopts)
+	-- vim.keymap.set("n", "<leader>wl", function()
+	-- 	print(vim.inspect(vim.lsp.buf.list_workleader_folders()))
+	-- end, bufopts)
+	-- vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
 end
 
 return M
