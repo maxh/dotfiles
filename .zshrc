@@ -77,3 +77,9 @@ asl() {
 ptc() {
   yarn prod:tunnel:connect
 }
+
+# copies uuid to clipboard 
+alias uuid='python3 -c "import uuid; print(str(uuid.uuid4()))" | sed s/\n// | pbcopy'
+
+# handles node version upgrade
+alias handle_node='asdf install && corepack enable && asdf reshim && yarn'
