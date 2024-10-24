@@ -83,3 +83,9 @@ alias uuid='python3 -c "import uuid; print(str(uuid.uuid4()))" | sed s/\n// | pb
 
 # handles node version upgrade
 alias handle_node='asdf install && corepack enable && asdf reshim && yarn'
+
+export CORP_TENANT_QID="qid::tenant:bb3ad8c0-1ca4-48d7-bb15-dca832e40900"
+
+tsc() {
+  NODE_OPTIONS='--max-old-space-size=8192' yarn tsc
+}
