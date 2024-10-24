@@ -3,7 +3,7 @@ return {
 	opts = {
 		auto_open_qflist = true,
 		auto_close_qflist = false,
-		bin_path = vim.fn.findfile("~/loop/backend/scripts/run_tsc.sh"),
+		bin_path = vim.fn.findfile("~/.scripts/run_tsc.sh"),
 		enable_progress_notifications = true,
 		flags = {
 			noEmit = true,
