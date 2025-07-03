@@ -51,3 +51,8 @@ vim.keymap.set("n", "<leader>mz", ":bufdo bd<CR>:Alpha<CR>", opts)
 -- Custom gx to open URLs.
 vim.keymap.set("x", "gx", require("maxh.utils.gx").open_url_under_cursor, opts)
 vim.keymap.set("n", "gx", require("maxh.utils.gx").open_url_under_cursor, opts)
+
+-- Add a keymap for 'gf' in normal mode to call require('maxh.utils.gf').open_file_under_cursor().
+vim.keymap.set('n', 'gf', function()
+  require('maxh.utils.gf').open_file_under_cursor()
+end, { noremap = true, silent = true })
