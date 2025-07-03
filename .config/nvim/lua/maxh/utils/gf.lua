@@ -13,7 +13,10 @@ local function extract_path(line)
 	local current_file = vim.fn.expand('%:p')
 	local current_dir = vim.fn.fnamemodify(current_file, ':h')
 
-	if path:match("^%.%./") or path:match("^%./") then
+	local loop_pkg, loop_subpath = path:match("^@loop%-payments/([^/]+)/(.+)")
+	if loop_pkg and loop_subpath then
+		path = "lib/" .. loop_pkg .. "/src/" .. loop_subpath
+	elseif path:match("^%.%./") or path:match("^%./") then
 		path = vim.fn.fnamemodify(current_dir .. '/' .. path, ':p')
 		path = vim.fn.fnamemodify(path, ':~:.' )
 	elseif path:match("^src/") then
