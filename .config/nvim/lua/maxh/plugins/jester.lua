@@ -2,7 +2,6 @@ return {
 	"David-Kunz/jester",
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
-		"mxsdev/nvim-dap-vscode-js",
 	},
 	opts = {
 		dap = {
@@ -24,7 +23,8 @@ return {
 		vim.keymap.set("n", "<leader>jd", function()
 			jester.debug({
 				dap = {
-					runtimeArgs = { "test", "--no-coverage", "-t", "$result", "--", "$file" },
+					-- runtimeArgs = { "test", "--no-coverage", "-t", "$result", "--", "$file" },
+					runtimeArgs = { "test", "--no-coverage", "--", "$file" },
 				},
 			})
 		end)

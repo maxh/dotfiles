@@ -11,8 +11,7 @@ u() {
 
 # "eslint" => run eslint fix on all .ts files, add, commit, push
 e() {
-  yarn style:eslint:fix-diff
-  git add .
+  yarn turbo fix:pr
   git commit -am "fix lint"
   git push
 }
@@ -44,7 +43,7 @@ fi
 
 # prod:tunnel:run
 ptr() {
-    yarn prod:tunnel:run $*
+    yarn prod:tunnel:run "$@"
 }
 
 # edit backfill, for use after yarn gen:backfill

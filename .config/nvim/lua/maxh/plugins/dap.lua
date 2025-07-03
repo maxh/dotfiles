@@ -1,7 +1,6 @@
 return {
 	"mfussenegger/nvim-dap",
 	dependencies = {
-		"mxsdev/nvim-dap-vscode-js",
 		"rcarriga/nvim-dap-ui",
 		"nvim-neotest/nvim-nio",
 	},
@@ -64,11 +63,6 @@ return {
 			{ noremap = true, silent = true }
 		)
 
-		require("dap-vscode-js").setup({
-			node_path = "node",
-			debugger_path = os.getenv("HOME") .. "/tools/vscode-js-debug",
-			adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-		})
 		local dap = require("dap")
 		dap.adapters.lldb = {
 			type = "executable",
@@ -76,7 +70,6 @@ return {
 			name = "lldb",
 		}
 
-		local dap = require("dap")
 		dap.configurations.cpp = {
 			{
 				name = "Launch",
@@ -91,6 +84,16 @@ return {
 			},
 		}
 		dap.configurations.c = dap.configurations.cpp
+
+		dap.adapters["pwa-node"] = {
+			type = "server",
+			host = "localhost",
+			port = "${port}",
+			executable = {
+				command = "node",
+				args = { os.getenv("HOME") .. "/tools/js-debug/src/dapDebugServer.js", "${port}" },
+			},
+		}
 
 		require("dapui").setup({
 			layouts = {

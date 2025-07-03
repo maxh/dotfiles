@@ -14,25 +14,31 @@ return {
 	},
 	opts = {
 		formatters_by_ft = {
-			c = { "clang-format" },
-			cpp = { "clang-format" },
 			javascript = { "prettier" },
+			typescript = { "prettier" },
+			typescriptreact = { "prettier" },
 			json = { "prettier" },
+			yml = { "prettier" },
+			yaml = { "prettier" },
 			lua = { "stylua" },
 			python = { "black" },
 			rust = { "rustfmt" },
+			c = { "clang-format" },
+			cpp = { "clang-format" },
 			sql = { "sqlformat" },
 			toml = { "taplo" },
-			typescript = { "prettier" },
-			typescriptreact = { "prettier" },
-			yml = { "prettier" },
 		},
 		format_on_save = { timeout_ms = 5000, lsp_fallback = true },
-		formatters = {
-			prettier = {
-				cmd = "yarn prettier",
-			},
-		},
+        formatters = {
+      prettier = {
+        command = "yarn",
+        args = { "prettier", "--stdin-filepath", "$FILENAME" },
+        stdin = true,
+        cwd = function()
+          return vim.fn.getcwd()
+        end,
+      },
+    },
 	},
 	init = function()
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

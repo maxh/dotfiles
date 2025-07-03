@@ -67,8 +67,9 @@ if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+export PATH="$HOME/.local/bin:$PATH"
 
 asl() {
   aws sso login
@@ -81,5 +82,5 @@ ptc() {
 # copies uuid to clipboard 
 alias uuid='python3 -c "import uuid; print(str(uuid.uuid4()))" | sed s/\n// | pbcopy'
 
-# handles node version upgrade
-alias handle_node='asdf install && corepack enable && asdf reshim && yarn'
+alias gp=/opt/homebrew/Cellar/git-spice/0.10.0/bin/gs
+eval "$(mise activate zsh)"
