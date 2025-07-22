@@ -2,46 +2,55 @@ local M = {}
 
 local function extract_path(line)
 	-- Try to match import/require paths first
-	local path = line:match("from%s+['\"]([^'\"]+)['\"]")
-		or line:match("require%s*%(%s*['\"]([^'\"]+)['\"]%s*%)")
+	local path = line:match("from%s+['\"]([^'\"]+)['\"]") or line:match("require%s*%(%s*['\"]([^'\"]+)['\"]%s*%)")
 	if not path then
 		path = line:match("([%w_/%.%-]+)")
 	end
-	if not path then return nil end
+	if not path then
+		return nil
+	end
 	path = path:gsub("}$", "")
 
-	local current_file = vim.fn.expand('%:p')
-	local current_dir = vim.fn.fnamemodify(current_file, ':h')
+	local current_file = vim.fn.expand("%:p")
+	local current_dir = vim.fn.fnamemodify(current_file, ":h")
 
+	-- Handle @loop-payments/ imports
 	local loop_pkg, loop_subpath = path:match("^@loop%-payments/([^/]+)/(.+)")
 	if loop_pkg and loop_subpath then
 		path = "lib/" .. loop_pkg .. "/src/" .. loop_subpath
+
+	-- Relative imports
 	elseif path:match("^%.%./") or path:match("^%./") then
-		path = vim.fn.fnamemodify(current_dir .. '/' .. path, ':p')
-		path = vim.fn.fnamemodify(path, ':~:.' )
+		path = vim.fn.fnamemodify(current_dir .. "/" .. path, ":p")
+		path = vim.fn.fnamemodify(path, ":~:.")
+		-- Remove leading slash if present and normalize ./ patterns
+		path = path:gsub("^/", "")
+		path = path:gsub("/%.%/", "/")  -- Remove /./ 
+		path = path:gsub("/%.%.$", "")  -- Remove trailing /.
+		path = path:gsub("^%.%/", "")  -- Remove leading ./
+
+	-- Imports starting with "src/" should be treated as root-relative
 	elseif path:match("^src/") then
-		local app_dir = current_file:match("(apps/[^/]+)")
-		if app_dir then
-			local src_root = app_dir .. "/src/"
-			if current_file:find(src_root, 1, true) then
-				path = src_root .. path:sub(5)
-			else
-				path = app_dir .. "/" .. path
-			end
-		else
-			path = "apps/backend/" .. path -- fallback
-		end
+		-- Keep the path as-is, just use it directly
+
+	-- Bare-style import: "corp/components/xyz"
 	else
-		local app_or_lib, name = current_file:match("/(apps|lib)/([^/]+)/")
+		local app_or_lib, name = current_file:match("^/(apps)/([^/]+)/")
+		if not app_or_lib then
+			app_or_lib, name = current_file:match("^/(lib)/([^/]+)/")
+		end
+
 		if app_or_lib and name then
 			if path:match("^" .. name .. "/") then
 				path = app_or_lib .. "/" .. path
+
 			elseif path:match("^common/") and app_or_lib == "lib" and name == "common" then
-				path = "lib/common/" .. path:sub(#("common/") + 1)
+				path = "lib/common/" .. path:sub(#"common/" + 1)
 			end
 		end
 	end
 
+	-- Add extension if missing
 	if not path:match("%.ts$") and not path:match("%.js$") then
 		path = path .. ".ts"
 	end
@@ -59,4 +68,4 @@ function M.open_file_under_cursor()
 	end
 end
 
-return M 
+return M
