@@ -31,7 +31,11 @@ local function extract_path(line)
 
 	-- Imports starting with "src/" should be treated as root-relative
 	elseif path:match("^src/") then
-		-- Keep the path as-is, just use it directly
+		-- If we're anywhere in apps/backend, prepend apps/backend/ to src/ imports
+		if current_file:match("apps/backend") then
+			path = "apps/backend/" .. path
+		end
+		-- Otherwise keep the path as-is
 
 	-- Bare-style import: "corp/components/xyz"
 	else
