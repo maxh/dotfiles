@@ -54,8 +54,12 @@ local function extract_path(line)
 		end
 	end
 
-	-- Add extension if missing
-	if not path:match("%.ts$") and not path:match("%.js$") then
+	-- Add .ts extension if no real file extension is present
+	-- Only preserve actual file extensions, not TypeScript naming patterns
+	if not path:match("%.json$") and not path:match("%.js$") and not path:match("%.css$") and 
+	   not path:match("%.html$") and not path:match("%.xml$") and not path:match("%.svg$") and
+	   not path:match("%.png$") and not path:match("%.jpg$") and not path:match("%.jpeg$") and
+	   not path:match("%.gif$") and not path:match("%.md$") and not path:match("%.txt$") then
 		path = path .. ".ts"
 	end
 
