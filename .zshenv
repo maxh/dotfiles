@@ -43,7 +43,9 @@ fi
 
 # prod:tunnel:run
 ptr() {
-    yarn prod:tunnel:run "$@"
+  echo "ptr $*" | pbcopy
+  yarn turbo build:runtime-only
+  yarn prod:tunnel:run "$@"
 }
 
 # edit backfill, for use after yarn gen:backfill

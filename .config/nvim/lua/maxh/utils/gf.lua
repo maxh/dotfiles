@@ -54,13 +54,38 @@ local function extract_path(line)
 		end
 	end
 
-	-- Add .ts extension if no real file extension is present
-	-- Only preserve actual file extensions, not TypeScript naming patterns
-	if not path:match("%.json$") and not path:match("%.js$") and not path:match("%.css$") and 
-	   not path:match("%.html$") and not path:match("%.xml$") and not path:match("%.svg$") and
-	   not path:match("%.png$") and not path:match("%.jpg$") and not path:match("%.jpeg$") and
-	   not path:match("%.gif$") and not path:match("%.md$") and not path:match("%.txt$") then
-		path = path .. ".ts"
+	-- Add .ts or .tsx extension if no real file extension is present
+	-- Heuristic:
+	-- - 'shared' is always treated as a TSX component (shared.tsx)
+	-- - When in a .ts or .tsx file:
+	--     - UpperCamelCase last segment (base name before any dot) => assume .tsx
+	--     - otherwise => assume .ts
+	-- - Paths ending with TypeScript naming suffixes like .util, .types, etc. are NOT treated as real extensions
+	-- - In all other cases, default to .ts
+	local hasRealExtension = (
+		path:match("%.tsx$") or path:match("%.ts$") or path:match("%.jsx$") or path:match("%.js$") or
+		path:match("%.json$") or path:match("%.css$") or path:match("%.scss$") or path:match("%.sass$") or path:match("%.less$") or
+		path:match("%.html$") or path:match("%.xml$") or path:match("%.svg$") or path:match("%.png$") or path:match("%.jpg$") or
+		path:match("%.jpeg$") or path:match("%.gif$") or path:match("%.md$") or path:match("%.txt$")
+	) ~= nil
+	if not hasRealExtension then
+		local lastSegment = path:match("([^/]+)$") or ""
+		local baseName = lastSegment:match("([^%.]+)") or lastSegment
+		if baseName == "shared" then
+			path = path .. ".tsx"
+		else
+			local current_ext = vim.fn.expand("%:e")
+			if current_ext == "ts" or current_ext == "tsx" then
+				local isUpperCamel = baseName:match("^[A-Z][A-Za-z0-9]*$") ~= nil
+				if isUpperCamel then
+					path = path .. ".tsx"
+				else
+					path = path .. ".ts"
+				end
+			else
+				path = path .. ".ts"
+			end
+		end
 	end
 
 	return path
