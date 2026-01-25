@@ -24,23 +24,26 @@ return {
 
 		local clangd_capabilities = require("cmp_nvim_lsp").default_capabilities()
 		clangd_capabilities.offsetEncoding = "utf-8"
-		require("lspconfig").clangd.setup({
+		vim.lsp.config("clangd", {
 			on_attach = on_attach,
 			capabilities = clangd_capabilities,
 		})
+		vim.lsp.enable("clangd")
 
-		require("lspconfig").graphql.setup({
+		vim.lsp.config("graphql", {
 			on_attach = on_attach,
 			filetypes = { "typescript", "typescriptreact" },
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
+		vim.lsp.enable("graphql")
 
-		require("lspconfig").rust_analyzer.setup({
+		vim.lsp.config("rust_analyzer", {
 			on_attach = on_attach,
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
+		vim.lsp.enable("rust_analyzer")
 
-		require("lspconfig").sqlls.setup({
+		vim.lsp.config("sqlls", {
 			on_attach = on_attach,
 			filetypes = { "sql" },
 			cmd = {
@@ -51,8 +54,9 @@ return {
 			},
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
+		vim.lsp.enable("sqlls")
 
-		require("lspconfig").lua_ls.setup({
+		vim.lsp.config("lua_ls", {
 			on_attach = on_attach,
 			filetypes = { "lua" },
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
@@ -67,5 +71,6 @@ return {
 				},
 			},
 		})
+		vim.lsp.enable("lua_ls")
 	end,
 }
