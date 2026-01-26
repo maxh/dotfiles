@@ -9,6 +9,7 @@
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "gitsigns.nvim": { "branch": "main", "commit": "abf82a65f185bd54adc0679f74b7d6e1ada690c9" },
   "goyo.vim": { "branch": "master", "commit": "9c72fdf2d202914318581f9f0dd09fd102f8504d" },
+  "iron.nvim": { "branch": "master", "commit": "0e07ace465edff6c4ed6db9f3b7bf919c40aeffb" },
   "jester": { "branch": "main", "commit": "6679cdc24e4bdb2d61d0e71e3c65011029f166ef" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "limelight.vim": { "branch": "master", "commit": "0c8cc7f503a775c505dc9c67f1f5041ab4d5f1fd" },
