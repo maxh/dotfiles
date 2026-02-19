@@ -1,6 +1,8 @@
 # https://unix.stackexchange.com/a/197135
 # Defined here so accessible in Vim shell.
 
+export TURBO_UI=false
+
 # "update" => add, commit, push
 # Eg: u add feature
 u() {
@@ -44,7 +46,8 @@ fi
 # prod:tunnel:run
 ptr() {
   echo "ptr $*" | pbcopy
-  yarn turbo build:runtime-only
+  yarn > /dev/null
+  TURBO_UI=0 yarn turbo build:runtime-only --output-logs errors-only
   yarn prod:tunnel:run "$@"
 }
 

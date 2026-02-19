@@ -1,5 +1,9 @@
 export EDITOR=nvim
 
+prisma_dev() {
+  TURBO_UI=true yarn turbo @loop-payments/prisma-client#generate-migrations
+}
+
 kill_port() {
   lsof -ti:$1 | xargs kill -9
 }
