@@ -89,3 +89,5 @@ alias uuid='python3 -c "import uuid; print(str(uuid.uuid4()))" | sed s/\n// | pb
 alias gp=/opt/homebrew/Cellar/git-spice/0.10.0/bin/gs
 eval "$(mise activate zsh)"
 export PATH="$HOME/.ghcup/bin:$PATH"
+
+export LOOP_BACKEND=/Users/max/loop/backend
