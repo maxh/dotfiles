@@ -39,10 +39,13 @@ return {
 
 		-- Find recent
 		vim.keymap.set("n", "<leader><leader>", custom_actions.find_recent_files, { noremap = true, silent = true })
+		local history_path = vim.fn.stdpath("data") .. "/databases/telescope_history.sqlite3"
+		vim.fn.mkdir(vim.fn.fnamemodify(history_path, ":h"), "p")
+
 		telescope.setup({
 			defaults = {
 				history = {
-					path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
+					path = history_path,
 					limit = 100,
 				},
 				mappings = {
