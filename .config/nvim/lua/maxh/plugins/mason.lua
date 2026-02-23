@@ -4,7 +4,7 @@ return {
 	config = function()
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls", "pyright", "hls" },
+			ensure_installed = { "lua_ls", "pyright" },
 			-- automatic_enable = true, -- optional, true by default
 		})
 	end,

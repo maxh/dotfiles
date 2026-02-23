@@ -11,7 +11,6 @@ return {
 				"markdown",
 				"markdown_inline",
 				"typescript",
-				"haskell",
 			},
 			sync_install = false,
 			auto_install = true,
