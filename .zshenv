@@ -1,6 +1,10 @@
 # https://unix.stackexchange.com/a/197135
 # Defined here so accessible in Vim shell.
 
+if [ -f "$HOME/.zshsecrets" ]; then
+  source "$HOME/.zshsecrets"
+fi
+
 export TURBO_UI=false
 
 # "update" => add, commit, push
