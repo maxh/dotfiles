@@ -50,9 +50,9 @@ fi
 # prod:tunnel:run
 ptr() {
   echo "ptr $*" | pbcopy
-  yarn > /dev/null
-  TURBO_UI=0 yarn turbo build:runtime-only --output-logs errors-only
-  yarn prod:tunnel:run "$@"
+  pnpm install > /dev/null
+  TURBO_UI=0 pnpm turbo build:runtime-only --output-logs errors-only
+  pnpm --filter @loop-payments/backend run prod:tunnel:run "$@"
 }
 
 # edit backfill, for use after yarn gen:backfill
